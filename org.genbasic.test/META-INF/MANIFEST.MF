@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: org.genbasic.test
+Bundle-Version: 1.0.0.qualifier
+Export-Package: org.genbasic.test
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.8.1"

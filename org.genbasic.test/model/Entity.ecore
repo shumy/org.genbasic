@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="my" nsURI="http://micael.org/my" nsPrefix="micael.org">
+  <eClassifiers xsi:type="ecore:EClass" name="IName" abstract="true" interface="true">
+    <eAnnotations source="unique" references="#//IName/name"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eSubpackages name="domain" nsURI="http://micael.org/my.domain" nsPrefix="micael.org">
+    <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="#//IName">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="birthday" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="organization" lowerBound="1"
+          eType="#//domain/Organization" eOpposite="#//domain/Organization/users"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
+          eType="#//domain/Group" eOpposite="#//domain/Group/users"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="addresses" upperBound="-1"
+          eType="#//domain/Address"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="#//IName">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="users" upperBound="-1"
+          eType="#//domain/User" eOpposite="#//domain/User/groups"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Organization" eSuperTypes="#//IName">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="users" upperBound="-1"
+          eType="#//domain/User" eOpposite="#//domain/User/organization"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Address">
+      <eAnnotations source="unique" references="#//domain/Address/code"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>
